@@ -1,0 +1,169 @@
+/* ═══════════════════════════════════════════════════════════
+   CUSTOM CURSOR SYSTEM
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Hide default cursor globally ───────────────────────── */
+*,
+*::before,
+*::after {
+  cursor: none !important;
+}
+
+/* ── Shared base ─────────────────────────────────────────── */
+.cursor-outer,
+.cursor-inner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 99999;
+  opacity: 0;
+  will-change: transform;
+  transition: opacity 0.3s ease;
+}
+
+.cursor-visible {
+  opacity: 1;
+}
+
+/* ══════════════════════════════════════════════════════════
+   OUTER RING  (lags behind mouse for trailing feel)
+   ══════════════════════════════════════════════════════════ */
+.cursor-outer {
+  width: 40px;
+  height: 40px;
+}
+
+.cursor-outer-ring {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 1.5px solid rgba(0, 212, 255, 0.55);
+  background: transparent;
+  box-shadow:
+    0 0 8px rgba(0, 212, 255, 0.2),
+    inset 0 0 8px rgba(0, 212, 255, 0.05);
+  transition:
+    width 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+    height 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease,
+    opacity 0.25s ease,
+    border-radius 0.35s ease;
+}
+
+/* ── Hover state: ring expands + glows ───────────────────── */
+.cursor-outer--hover .cursor-outer-ring {
+  width: 56px;
+  height: 56px;
+  border-color: rgba(0, 212, 255, 0.9);
+  background: rgba(0, 212, 255, 0.06);
+  box-shadow:
+    0 0 20px rgba(0, 212, 255, 0.45),
+    0 0 40px rgba(0, 212, 255, 0.18),
+    inset 0 0 12px rgba(0, 212, 255, 0.08);
+}
+
+/* compensate size difference so ring stays centered */
+.cursor-outer--hover {
+  margin-left: -8px;
+  margin-top: -8px;
+}
+
+/* ── Click state: ring compresses with bright pulse ──────── */
+.cursor-outer--click .cursor-outer-ring {
+  width: 30px;
+  height: 30px;
+  border-color: rgba(0, 212, 255, 1);
+  background: rgba(0, 212, 255, 0.12);
+  box-shadow:
+    0 0 25px rgba(0, 212, 255, 0.7),
+    0 0 50px rgba(0, 212, 255, 0.3);
+}
+
+.cursor-outer--click {
+  margin-left: 5px;
+  margin-top: 5px;
+}
+
+/* ══════════════════════════════════════════════════════════
+   INNER DOT  (exact mouse position, no lag)
+   ══════════════════════════════════════════════════════════ */
+.cursor-inner {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #00d4ff;
+  box-shadow:
+    0 0 6px rgba(0, 212, 255, 0.8),
+    0 0 12px rgba(0, 212, 255, 0.4);
+  transition:
+    width 0.2s cubic-bezier(0.34, 1.56, 0.64, 1),
+    height 0.2s cubic-bezier(0.34, 1.56, 0.64, 1),
+    background 0.2s ease,
+    box-shadow 0.2s ease,
+    opacity 0.2s ease;
+}
+
+/* ── Hover: dot shrinks to near-invisible (ring dominates) ─ */
+.cursor-inner--hover {
+  width: 3px;
+  height: 3px;
+  background: rgba(0, 212, 255, 0.7);
+  box-shadow:
+    0 0 4px rgba(0, 212, 255, 0.6);
+}
+
+/* ── Click: dot expands with burst glow ─────────────────── */
+.cursor-inner--click {
+  width: 10px;
+  height: 10px;
+  background: #ffffff;
+  box-shadow:
+    0 0 12px rgba(0, 212, 255, 1),
+    0 0 24px rgba(0, 212, 255, 0.6);
+}
+
+/* ══════════════════════════════════════════════════════════
+   SCAN-LINE ANIMATION on outer ring (subtle premium detail)
+   ══════════════════════════════════════════════════════════ */
+@keyframes cursorSpin {
+  to { transform: rotate(360deg); }
+}
+
+.cursor-outer-ring::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0%,
+    rgba(0, 212, 255, 0.5) 15%,
+    transparent 30%
+  );
+  animation: cursorSpin 2.5s linear infinite;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.cursor-outer--hover .cursor-outer-ring::before {
+  opacity: 1;
+}
+
+/* ══════════════════════════════════════════════════════════
+   MOBILE — restore default cursor
+   ══════════════════════════════════════════════════════════ */
+@media (pointer: coarse) {
+  *,
+  *::before,
+  *::after {
+    cursor: auto !important;
+  }
+
+  .cursor-outer,
+  .cursor-inner {
+    display: none !important;
+  }
+}

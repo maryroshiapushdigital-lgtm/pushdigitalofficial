@@ -1,0 +1,345 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
+/* ══════════════════════════════════════════════════════════
+   CSS VARIABLES
+   ══════════════════════════════════════════════════════════ */
+:root {
+  --cyan: #00d2ff;
+  --cyan-dim: rgba(0, 210, 255, 0.18);
+  --cyan-glow: rgba(0, 210, 255, 0.35);
+  --glass-bg: rgba(8, 8, 18, 0.55);
+  --glass-border: rgba(0, 210, 255, 0.12);
+  --glass-blur: blur(20px);
+  --text-primary: #e2e8f0;
+  --text-muted: #94a3b8;
+  --nav-height: 70px;
+}
+
+/* ══════════════════════════════════════════════════════════
+   NAVBAR BASE
+   ══════════════════════════════════════════════════════════ */
+.navbar {
+  font-family: "Inter", sans-serif;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  width: 100%;
+
+  /* Glass base */
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+
+  /* Bottom accent line */
+  border-bottom: 1px solid var(--glass-border);
+  box-shadow:
+    0 1px 0 rgba(0, 210, 255, 0.08),
+    0 8px 32px rgba(0, 0, 0, 0.45);
+
+  transition: background 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+
+  /* CRITICAL: must NOT clip the mobile dropdown */
+  overflow: visible;
+}
+
+/* Scrolled: deepen the glass */
+.navbar.scrolled {
+  background: rgba(6, 6, 14, 0.82);
+  border-bottom-color: rgba(0, 210, 255, 0.2);
+  box-shadow:
+    0 1px 0 rgba(0, 210, 255, 0.15),
+    0 12px 48px rgba(0, 0, 0, 0.6);
+}
+
+/* Cyan gradient glow line at very bottom */
+.navbar::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  width: 80%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--cyan) 40%,
+    var(--cyan) 60%,
+    transparent 100%
+  );
+  opacity: 0.25;
+  /* pointer-events: none; */
+  transition: opacity 0.4s ease;
+}
+
+.navbar.scrolled::after {
+  opacity: 0.45;
+}
+
+/* ══════════════════════════════════════════════════════════
+   NAVBAR CONTAINER
+   ══════════════════════════════════════════════════════════ */
+.navbar-container {
+  margin: 0 auto;
+  padding: 0 1.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--nav-height);
+  background: transparent;
+}
+
+/* ══════════════════════════════════════════════════════════
+   LOGO
+   ══════════════════════════════════════════════════════════ */
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+/* ══════════════════════════════════════════════════════════
+   DESKTOP MENU
+   ══════════════════════════════════════════════════════════ */
+.navbar-menu {
+  display: none;
+  align-items: center;
+  gap: 0;
+  margin: 0 1.5rem;
+  flex: 1;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .navbar-menu {
+    display: flex;
+  }
+}
+
+.navbar-link {
+  position: relative;
+  padding: 0.5rem 1.1rem;
+  color: var(--text-muted);
+  font-size: 13.5px;
+  font-weight: 450;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  transition: color 0.25s ease;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.navbar-link:hover {
+  color: var(--cyan);
+}
+
+/* Animated underline */
+.navbar-underline {
+  position: absolute;
+  bottom: 0px;
+  left: 1.1rem;
+  width: 0;
+  height: 1.5px;
+  background: linear-gradient(90deg, var(--cyan), #0ea5e9);
+  border-radius: 2px;
+  box-shadow: 0 0 6px var(--cyan-glow);
+  transition: width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.navbar-link:hover .navbar-underline {
+  width: calc(100% - 2.2rem);
+}
+
+/* ══════════════════════════════════════════════════════════
+   RIGHT SIDE
+   ══════════════════════════════════════════════════════════ */
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+/* CTA Button */
+.navbar-cta {
+  display: none;
+  padding: 0.55rem 1.35rem;
+  background: transparent;
+  color: var(--cyan);
+  border: 1px solid rgba(0, 210, 255, 0.45);
+  border-radius: 0.5rem;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: "Inter", sans-serif;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(4px);
+}
+
+@media (min-width: 640px) {
+  .navbar-cta {
+    display: block;
+  }
+}
+
+.navbar-cta:hover {
+  background: var(--cyan-dim);
+  border-color: var(--cyan);
+  box-shadow:
+    0 0 16px rgba(0, 210, 255, 0.3),
+    0 0 32px rgba(0, 210, 255, 0.1);
+  color: #fff;
+}
+
+.navbar-cta:active {
+  transform: scale(0.96);
+}
+
+/* ══════════════════════════════════════════════════════════
+   HAMBURGER
+   ══════════════════════════════════════════════════════════ */
+.hamburger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  background: rgba(0, 210, 255, 0.05);
+  border: 1px solid rgba(0, 210, 255, 0.15);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  color: var(--text-primary);
+  transition: all 0.25s ease;
+}
+
+@media (min-width: 768px) {
+  .hamburger {
+    display: none;
+  }
+}
+
+.hamburger:hover {
+  background: rgba(0, 210, 255, 0.1);
+  border-color: rgba(0, 210, 255, 0.35);
+  box-shadow: 0 0 12px rgba(0, 210, 255, 0.2);
+  color: var(--cyan);
+}
+
+.hamburger:active {
+  transform: scale(0.93);
+}
+
+/* ══════════════════════════════════════════════════════════
+   MOBILE MENU — glassmorphism panel
+   FIX: position:fixed so it escapes the navbar stacking
+        context and is always fully visible on screen.
+   ══════════════════════════════════════════════════════════ */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+
+  z-index: 900; /* BELOW navbar */
+
+  background: rgba(6, 6, 16, 0.98);
+  backdrop-filter: blur(20px);
+
+  display: flex;
+  flex-direction: column;
+  padding-top: 80px;
+
+  overflow-y: auto;
+}
+/* Subtle top glow edge */
+.mobile-menu::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 10%;
+  width: 80%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 210, 255, 0.5) 40%,
+    rgba(0, 210, 255, 0.5) 60%,
+    transparent
+  );
+  pointer-events: none;
+}
+
+/* ── Mobile nav items ── */
+.mobile-menu-item {
+  /* Explicit color — never let it inherit from a dark parent */
+  color: var(--text-muted) !important;
+
+  padding: 0.85rem 1.75rem;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 450;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  border-left: 2px solid transparent;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, padding-left 0.2s ease;
+}
+
+.mobile-menu-item:hover {
+  background: rgba(0, 210, 255, 0.07) !important;
+  color: var(--cyan) !important;
+  border-left-color: rgba(0, 210, 255, 0.55);
+  padding-left: 2.25rem;
+}
+
+/* Hairline divider between items */
+.mobile-menu-item + .mobile-menu-item {
+  border-top: 1px solid rgba(255, 255, 255, 0.045);
+}
+
+/* ── Mobile CTA ── */
+.mobile-cta {
+  margin: 1rem 1.75rem 0;
+  padding: 0.75rem 1.5rem;
+  background: transparent;
+  color: var(--cyan) !important;
+  border: 1px solid rgba(0, 210, 255, 0.4);
+  border-radius: 0.5rem;
+  font-size: 13.5px;
+  font-weight: 600;
+  font-family: "Inter", sans-serif;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  width: calc(100% - 3.5rem);
+  text-align: center;
+  transition: all 0.25s ease;
+  backdrop-filter: blur(4px);
+}
+
+.mobile-cta:hover {
+  background: rgba(0, 210, 255, 0.1);
+  border-color: var(--cyan);
+  box-shadow:
+    0 0 16px rgba(0, 210, 255, 0.28),
+    0 0 32px rgba(0, 210, 255, 0.1);
+  color: #fff !important;
+}
+
+.mobile-cta:active {
+  transform: scale(0.97);
+}
+.navbar {
+  z-index: 1000;
+}
