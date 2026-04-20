@@ -55,8 +55,8 @@ export default function Navbar() {
             <Image
               src="/logo-img.png"
               alt="Push Digital"
-              width={200}
-              height={50}
+              width={187}
+              height={35}
             />
           </motion.div>
 
@@ -64,13 +64,14 @@ export default function Navbar() {
           <div className="navbar-menu">
             {menuItems.map((item, index) => (
               <motion.a
-  key={item.key}
-  className="navbar-link"
-  initial={{ opacity: 0, y: -10 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ delay: index * 0.05 }}
-  onClick={(e) => handleNavClick(e, item.key)}
->{item.label}
+                key={item.key}
+                className="navbar-link"
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.05 }}
+                onClick={(e) => handleNavClick(e, item.key)}
+              >
+                {item.label}
                 <span className="navbar-underline"></span>
               </motion.a>
             ))}
@@ -95,6 +96,7 @@ export default function Navbar() {
               className="hamburger"
               onClick={toggleMenu}
             >
+              {/* FIX: display:block prevents inline gap that causes position shift on icon swap */}
               <svg
                 width="24"
                 height="24"
@@ -102,6 +104,7 @@ export default function Navbar() {
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="2"
+                style={{ display: 'block' }}
               >
                 {isOpen ? (
                   <>
