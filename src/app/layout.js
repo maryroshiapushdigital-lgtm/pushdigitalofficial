@@ -13,7 +13,6 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <CustomCursor />
-        <div className="cursor-light"></div>
         <LightEffect />
         {children}
       </body>

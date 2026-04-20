@@ -734,25 +734,25 @@ export default function Hero({ sectionRefs, scrollToSection }) {
           {/* RIGHT */}
           <div className="footer-contact">
             <h4>Contact</h4>
-            <p className="contact-item">
+            <div className="contact-item">
               <Image src="/map.png" alt="map" width={12} height={16} />
               <span>
                 339/97, Lakshmanaswamy Salai,<br />
                 KK Nagar, Chennai - 600 078,<br />
                 Tamil Nadu, India.
               </span>
-            </p>
-            <p className="contact-item">
+            </div>
+            <div className="contact-item">
               <Image src="/phone.png" alt="mobile" width={16} height={13} />
               <span>
-                <p>Landline: (+91) 44 - 42633329</p>
-                <p>Mobile: (+91) 98402 64453</p>
+                <span style={{ display: 'block' }}>Landline: (+91) 44 - 42633329</span>
+                <span style={{ display: 'block' }}>Mobile: (+91) 98402 64453</span>
               </span>
-            </p>
-            <p className="contact-item">
+            </div>
+            <div className="contact-item">
               <Image src="/email.png" alt="email" width={16} height={13} />
-              <p>enquiry@push.digital</p>
-            </p>
+              <span>enquiry@push.digital</span>
+            </div>
           </div>
 
         </div>

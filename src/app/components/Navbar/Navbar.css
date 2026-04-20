@@ -86,9 +86,11 @@
   padding: 0 1.75rem;
   display: flex;
   align-items: center;
- /* gap:250px; */
+  justify-content: space-between;
   height: var(--nav-height);
-  background:#12121A;
+  background: #12121A;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* ══════════════════════════════════════════════════════════
@@ -224,7 +226,8 @@
   border-radius: 0.5rem;
   cursor: pointer;
   color: var(--text-primary);
-  transition: all 0.25s ease;
+  transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, color 0.25s ease;
+  flex-shrink: 0;
 }
 
 @media (min-width: 640px) {
@@ -240,9 +243,8 @@
   color: var(--cyan);
 }
 
-.hamburger:active {
-  transform: scale(0.93);
-}
+/* Removed :active scale — it caused layout shift via transition: all
+   catching the transform change alongside Framer Motion rerender */
 
 /* ══════════════════════════════════════════════════════════
    MOBILE MENU — glassmorphism panel
@@ -256,7 +258,7 @@
   width: 100%;
   height: 100vh;
 
-  z-index: 900; /* BELOW navbar */
+  z-index: 9999; /* above all page content, below navbar (10000) */
 
   background: rgba(6, 6, 16, 0.98);
   backdrop-filter: blur(20px);
@@ -332,7 +334,7 @@
   cursor: pointer;
   width: calc(100% - 3.5rem);
   text-align: center;
-  transition: all 0.25s ease;
+  transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, color 0.25s ease;
   backdrop-filter: blur(4px);
 }
 
@@ -349,7 +351,7 @@
   transform: scale(0.97);
 }
 .navbar {
-  z-index: 1000;
+  z-index: 10000;
 }
 .logo-img {
   width: 160px;
@@ -357,35 +359,76 @@
 }
 
 @media (max-width: 640px) {
-  .logo-img {
-    width: 110px;
+
+  /* ── Navbar container ── */
+  .navbar-container {
+    padding: 0 12px;
+    height: 60px;
   }
-  .hamburger{
-    width: auto;
+
+  /* ── Logo ── */
+  .navbar-logo img {
+    width: 120px;
+    height: auto;
+  }
+  .logo-img {
+    width: 120px;
+  }
+
+  /* ── Hide desktop menu ── */
+  .navbar-menu {
+    display: none !important;
+  }
+
+  /* ── Hide CTA button ── */
+  .navbar-cta {
+    display: none !important;
+  }
+
+  /* ── Show hamburger ── */
+  .hamburger {
+    display: flex !important;
+  }
+
+  /* ── Right side alignment ── */
+  .navbar-right {
+    gap: 0;
+  }
+
+  /* ── Mobile menu adjustments ── */
+  .mobile-menu {
+    padding-top: 68px;
+  }
+
+  .mobile-menu-item {
+    padding: 0.75rem 1.25rem;
+    font-size: 15px;
+  }
+
+  .mobile-cta {
+    margin: 1.25rem 1.25rem 0;
+    width: calc(100% - 2.5rem);
+    font-size: 14px;
+    padding: 0.85rem 1.5rem;
   }
 }
-@media(min-width:1440px) and (max-width:1559){
+
+@media (min-width: 1440px) and (max-width: 1559px) {
   .logo-img {
-  width: 187px;
-  height: 34px;
+    width: 187px;
+    height: 34px;
   }
-  .navbar-container{
+  .navbar-container {
     padding-left: 30px;
- 
   }
-  .navbar-cta{
-   padding-right: 20px;
-   
+  .navbar-cta {
+    padding-right: 20px;
   }
-  .navbar-menu{
-    margin-right:20px ;
-      gap: 40px;
+  .navbar-menu {
+    margin-right: 20px;
+    gap: 40px;
   }
-  .hero-section{
-    margin-bottom: px;
-  }
-  .navbar-logo{
+  .navbar-logo {
     margin-left: 5px;
   }
-  
 }

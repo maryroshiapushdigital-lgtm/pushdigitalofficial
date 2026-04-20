@@ -1,12 +1,23 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import './Navbar.css';
 import Image from 'next/image';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+
+  // Lock body scroll when mobile menu is open to prevent
+  // scrollbar disappearance from shifting the viewport width
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => { document.body.style.overflow = ''; };
+  }, [isOpen]);
 
   const menuItems = [
     { label: 'Home', key: 'home' },
@@ -39,9 +50,6 @@ export default function Navbar() {
     <>
       <motion.nav
         className="navbar"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
       >
         <div className="navbar-container">
           {/* Logo */}
