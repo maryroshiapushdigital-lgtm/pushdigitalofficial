@@ -1957,8 +1957,10 @@ padding-bottom: 0px;
   max-width: 600px;
 }
 .research{
-margin-right: 100px;
-  max-width: 500px;
+width: 100%;
+        padding: 0;
+        margin: 50px 0;
+        max-width: 100%;
 }
 .video3{
    max-width: 500px;

@@ -26,12 +26,13 @@
   right: 0;
   z-index: 1000;
   width: 100%;
+  background-color: #12121A;
   
 
   /* Glass base */
-  background: var(--glass-bg);
+  /* background: var(--glass-bg);
   backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur); */
 
   /* Bottom accent line */
   border-bottom: 1px solid var(--glass-border);
@@ -62,13 +63,13 @@
   left: 10%;
   width: 80%;
   height: 1px;
-  background: linear-gradient(
+  /* background: linear-gradient(
     90deg,
     transparent 0%,
     var(--cyan) 40%,
     var(--cyan) 60%,
     transparent 100%
-  );
+  ); */
   opacity: 0.25;
   /* pointer-events: none; */
   transition: opacity 0.4s ease;
@@ -183,7 +184,7 @@
 .navbar-cta {
   display: none;
   padding: 0.55rem 1.35rem;
-  background: transparent;
+  background: rgba(3, 95, 116, 0.45);
   color: var(--cyan);
   border: 1px solid rgba(0, 210, 255, 0.45);
   border-radius: 0.5rem;
@@ -403,6 +404,7 @@
   /* ── Mobile menu adjustments ── */
   .mobile-menu {
     padding-top: 68px;
+    gap:22px;
   }
 
   .mobile-menu-item {
@@ -419,7 +421,7 @@
   
 }
 
-@media (min-width: 1440px) and (max-width: 1559px) {
+@media (min-width: 1440px) {
   .logo-img {
     width: 187px;
     height: 34px;
@@ -431,8 +433,8 @@
     padding-right: 20px;
   }
   .navbar-menu {
-    margin-right: 20px;
-    gap: 40px;
+    margin-right: 10px;
+  gap: 5px;
   }
   .navbar-logo {
     margin-left: 5px;
@@ -441,11 +443,11 @@
 @media (min-width: 1024px) {
   .navbar-link{
    
-    margin-left: 0px;
+    margin-left: 25px;
 
   }
   .navbar-menu{
-    gap: 0px;
+    gap: 20px;
    
   }
   .navbar-container{
