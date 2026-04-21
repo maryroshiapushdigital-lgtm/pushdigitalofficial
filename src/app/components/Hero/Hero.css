@@ -930,13 +930,14 @@ padding-right: 39px
   padding: 2.25rem 2rem;
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 /* Icon */
 .advance-icon-wrap {
   width: 60px;
   height: 60px;
-  border-radius: 12px;
+  border-radius: 90px;
   background: rgba(255, 255, 255, 0.04);
   display: flex;
   align-items: center;
@@ -945,8 +946,8 @@ padding-right: 39px
 }
 
 .advance-icon {
-  width: 32px;
-  height: 32px;
+  width:800px;
+  height: 49px;
   object-fit: contain;
 }
 

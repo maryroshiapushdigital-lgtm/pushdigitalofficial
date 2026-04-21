@@ -184,8 +184,8 @@
 .navbar-cta {
   display: none;
   padding: 0.55rem 1.35rem;
-  background: rgba(3, 95, 116, 0.45);
-  color: var(--cyan);
+  background:#03B7DD;
+  color: black;
   border: 1px solid rgba(0, 210, 255, 0.45);
   border-radius: 0.5rem;
   font-size: 13px;
