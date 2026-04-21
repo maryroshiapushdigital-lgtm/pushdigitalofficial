@@ -735,7 +735,7 @@ export default function Hero({ sectionRefs, scrollToSection }) {
           <div className="footer-contact">
             <h4>Contact</h4>
             <div className="contact-item">
-              <Image src="/map.png" alt="map" width={12} height={16} />
+              <Image src="/map.png" className='img' alt="map" width={12} height={16} />
               <span>
                 339/97, Lakshmanaswamy Salai,<br />
                 KK Nagar, Chennai - 600 078,<br />
@@ -743,14 +743,14 @@ export default function Hero({ sectionRefs, scrollToSection }) {
               </span>
             </div>
             <div className="contact-item">
-              <Image src="/phone.png" alt="mobile" width={16} height={13} />
+              <Image src="/phone.png"className='img' alt="mobile" width={16} height={13} />
               <span>
                 <span style={{ display: 'block' }}>Landline: (+91) 44 - 42633329</span>
                 <span style={{ display: 'block' }}>Mobile: (+91) 98402 64453</span>
               </span>
             </div>
             <div className="contact-item">
-              <Image src="/email.png" alt="email" width={16} height={13} />
+              <Image src="/email.png" className='img' alt="email" width={16} height={13} />
               <span>enquiry@push.digital</span>
             </div>
           </div>
