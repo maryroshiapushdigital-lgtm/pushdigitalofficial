@@ -363,7 +363,7 @@
   height: auto;
 }
 
-@media (max-width: 640px) {
+@media (min-width: 640px)and (max-width:1024) {
 
   /* ── Navbar container ── */
   .navbar-container {
@@ -416,6 +416,7 @@
     font-size: 14px;
     padding: 0.85rem 1.5rem;
   }
+  
 }
 
 @media (min-width: 1440px) and (max-width: 1559px) {
@@ -437,47 +438,22 @@
     margin-left: 5px;
   }
 }
-@media (min-width: 1024px) and (max-width: 1439px) {
-  /* ── Tablet navbar layout ── */
-  .navbar {
+@media (min-width: 1024px) {
+  .navbar-link{
+   
+    margin-left: 0px;
+
+  }
+  .navbar-menu{
+    gap: 0px;
+   
+  }
+  .navbar-container{
+
+ margin-left: 2px;
+ max-width: 20px;
+  }
+  .navbar{
     max-width: 100%;
-  }
-
-  .navbar-container {
-    width: 100%;
-    max-width: 100%;
-    margin: 0 auto;
-    padding: 0 1rem;
-    box-sizing: border-box;
-  }
-
-  .navbar-menu {
-    display: flex;
-    gap: 2px;
-    margin: 0 0.5rem;
-    flex: 1;
-    justify-content: center;
-  }
-
-  .navbar-link {
-    font-size: 11.5px;
-    padding: 0.4rem 0.5rem;
-    margin-left: 0;
-  }
-
-  .navbar-cta {
-    display: block;
-    font-size: 11px;
-    padding: 0.45rem 0.85rem;
-    white-space: nowrap;
-  }
-
-  .hamburger {
-    display: none;
-  }
-
-  .navbar-logo img {
-    width: 140px;
-    height: auto;
   }
 }

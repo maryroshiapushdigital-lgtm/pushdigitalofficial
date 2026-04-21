@@ -1951,3 +1951,20 @@ padding-bottom: 0px;
      padding-left: 32px;
   }
 }
+
+@media (min-width: 640px)and (max-width:1024) {
+.about-video{
+  max-width: 600px;
+}
+.research{
+margin-right: 100px;
+  max-width: 500px;
+}
+.video3{
+   max-width: 500px;
+
+}
+.footer-container{
+  padding-left: 100px;
+}
+}
