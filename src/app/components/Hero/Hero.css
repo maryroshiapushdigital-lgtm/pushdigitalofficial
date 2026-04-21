@@ -981,7 +981,7 @@ padding-right: 39px
 @media (max-width: 1024px) {
   .advance-grid {
     display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 20px;
   justify-items: center; 
  }
@@ -1004,6 +1004,9 @@ padding-right: 39px
 }
 .advance-icon-wrap {
   align-self: flex-end;   /* ✅ icon also moves right */
+}
+.why-row{
+  gap: 2rem;
 }
 }
 
@@ -1467,6 +1470,32 @@ display: block;
    padding-bottom: 40px;
     
 }
+
+/* ── Tablet video responsiveness (1024px – 1439px) ── */
+@media (min-width: 1024px) and (max-width: 1439px) {
+  .about-video {
+    max-width: 90%;
+    border-radius: 200px;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .video3 {
+    max-width: 90%;
+    border-radius: 200px;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .research {
+    max-width: 90%;
+    border-radius: 200px;
+    margin: 60px auto 150px;
+    padding: 60px 0;
+    width: 90%;
+  }
+}
+
 @media (min-width: 1200px) {
 
   .video3 {
