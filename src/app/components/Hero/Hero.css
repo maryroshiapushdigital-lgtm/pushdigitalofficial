@@ -1947,8 +1947,9 @@ padding-bottom: 0px;
   }
   .video3{
            border-radius: 600px;
-       
-       width:300px ;
+       padding: 0 20px;
+       width:100% ;
+
 
   }
   .footer-contact{
@@ -1974,10 +1975,15 @@ width: 100%;
         max-width: 100%;
 }
 .video3{
-   max-width: 500px;
+   width: 100%;
+   padding: 0 30px;
 
 }
 .footer-container{
   padding-left: 100px;
+}
+.contact-item{
+  display: flex;
+  gap: 5px;
 }
 }
